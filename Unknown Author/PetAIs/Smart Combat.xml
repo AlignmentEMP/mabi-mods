@@ -1,0 +1,638 @@
+<rules>
+    <rule name="1">
+        <conditions>
+            <condition name="target_state" state="walk, run" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="10000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="targeted" targeting_type="attack" />
+    </rule>
+    <rule name="2">
+        <conditions>
+            <condition name="target_state" state="stop, walk" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="prepare_skill" pet_skill="smash" try_cnt="0" timeout="10000" />
+                <cmd name="melee_attack" timeout="0" />
+            </sequence>
+        </pattern>
+        <event name="seek_target" />
+    </rule>
+    <rule name="3">
+        <conditions>
+            <condition name="target_state" state="run" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="0" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="target_skill_prepare" />
+    </rule>
+    <rule name="4">
+        <conditions>
+            <condition name="target_state" state="hit" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="aimed" />
+    </rule>
+    <rule name="5">
+        <conditions>
+            <condition name="target_distance" min_distance="100" max_distance="300" />
+            <condition name="target_state" state="hit" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="target_magic_prepare" />
+    </rule>
+    <rule name="6">
+        <conditions>
+            <condition name="target_state" state="hit" />
+            <condition name="target_distance" min_distance="300" max_distance="1500" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="move_against" distance="900" run="true" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="target_magic_prepare" />
+    </rule>
+    <rule name="7">
+        <conditions>
+            <condition name="target_state" state="hit" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="target_skill_prepare" />
+    </rule>
+    <rule name="8">
+        <conditions>
+            <condition name="target_state" state="stop" />
+            <condition name="skill_preparable" pet_skill="lightningbolt" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="stackmagic_attack" stack_magic="lightningbolt" charge="1" timeout="0" />
+            </sequence>
+        </pattern>
+        <event name="target_skill_prepare" />
+    </rule>
+    <rule name="9">
+        <conditions>
+            <condition name="target_state" state="stop" />
+            <condition name="skill_preparable" pet_skill="firebolt" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="stackmagic_attack" stack_magic="firebolt" charge="1" timeout="0" />
+            </sequence>
+        </pattern>
+        <event name="target_skill_prepare" />
+    </rule>
+    <rule name="10">
+        <conditions>
+            <condition name="target_state" state="stop" />
+            <condition name="skill_preparable" pet_skill="icebolt" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="0" />
+            </sequence>
+        </pattern>
+        <event name="target_skill_prepare" />
+    </rule>
+    <rule name="11">
+        <conditions>
+            <condition name="target_state" state="stop, walk" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="prepare_skill" pet_skill="smash" try_cnt="0" timeout="0" />
+                <cmd name="melee_attack" timeout="0" />
+            </sequence>
+        </pattern>
+        <event name="target_skill_prepare" />
+    </rule>
+    <rule name="12">
+        <conditions>
+            <condition name="target_state" state="walk" />
+            <condition name="target_distance" min_distance="100" max_distance="400" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="aimed" />
+    </rule>
+    <rule name="13">
+        <conditions>
+            <condition name="target_state" state="stop" />
+//>
+            <condition name="target_distance" min_distance="100" max_distance="200" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="aimed" />
+    </rule>
+    <rule name="14">
+        <conditions>
+            <condition name="target_state" state="walk" />
+            <condition name="target_distance" min_distance="400" max_distance="1500" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="move_against" distance="1400" run="true" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="aimed" />
+    </rule>
+    <rule name="15">
+        <conditions>
+            <condition name="target_state" state="stop" />
+            <condition name="target_distance" min_distance="200" max_distance="1500" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="move_against" distance="1400" run="true" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="aimed" />
+    </rule>
+    <rule name="16">
+        <conditions>
+            <condition name="target_state" state="walk, run" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="move_against" distance="1500" run="true" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="target_magic_prepare" />
+    </rule>
+    <rule name="17">
+        <conditions>
+            <condition name="target_state" state="stop" />
+            <condition name="target_distance" min_distance="100" max_distance="400" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="target_magic_prepare" />
+    </rule>
+    <rule name="18">
+        <conditions>
+            <condition name="target_state" state="stop" />
+            <condition name="target_distance" min_distance="400" max_distance="1500" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="move_against" distance="1400" run="true" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="target_magic_prepare" />
+    </rule>
+    <rule name="19">
+        <conditions>
+            <condition name="target_state" state="stop, walk" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="counter" try_cnt="0" timeout="0" />
+                <cmd name="wait" min="2000" max="10000" />
+            </sequence>
+        </pattern>
+        <event name="now_targeting" />
+    </rule>
+    <rule name="20">
+        <conditions>
+            <condition name="target_state" state="hit" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="now_targeting" />
+    </rule>
+    <rule name="21">
+        <conditions>
+            <condition name="target_state" state="run" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="wait" min="3000" max="3000" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="now_targeting" />
+    </rule>
+    <rule name="22">
+        <conditions>
+            <condition name="target_state" state="blowaway" />
+            <condition name="target_state" state="shoved" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="wait" min="1000" max="10000" />
+                <cmd name="process_skill" target="enemy" timeout="0" />
+            </sequence>
+        </pattern>
+        <event name="now_targeting" />
+    </rule>
+    <rule name="23">
+        <conditions>
+            <condition name="target_state" state="stop, walk" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="prepare_skill" pet_skill="smash" try_cnt="0" timeout="0" />
+                <cmd name="melee_attack" timeout="0" />
+            </sequence>
+        </pattern>
+        <event name="targeted" targeting_type="alert" />
+    </rule>
+    <rule name="24">
+        <conditions>
+            <condition name="target_state" state="blowaway" />
+            <condition name="target_state" state="shoved" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="wait" min="1000" max="10000" />
+            </sequence>
+        </pattern>
+        <event name="aimed" />
+    </rule>
+    <rule name="25">
+        <conditions>
+            <condition name="target_state" state="blowaway" />
+            <condition name="target_state" state="shoved" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="wait" min="1000" max="10000" />
+                <cmd name="process_skill" target="enemy" timeout="0" />
+            </sequence>
+        </pattern>
+        <event name="target_skill_prepare" />
+    </rule>
+    <rule name="26">
+        <conditions />
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="prepare_skill" pet_skill="counter" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="10000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="attack" pet_skill="smash" down="true" pet_attackable_skill="smash" />
+    </rule>
+    <rule name="27">
+        <conditions>
+            <condition name="skill_preparable" pet_skill="windmill" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="prepare_skill" pet_skill="windmill" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="1000" max="10000" />
+                <cmd name="process_skill" target="enemy" timeout="10000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="attack" pet_attackable_skill="counter" down="true" />
+    </rule>
+    <rule name="28">
+        <conditions />
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="attack" pet_skill="counter" down="true" pet_attackable_skill="counter" />
+    </rule>
+    <rule name="29">
+        <conditions />
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="attack" pet_attackable_skill="windmill" down="false" />
+    </rule>
+    <rule name="30">
+        <conditions />
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="attack" pet_attackable_skill="windmill" down="true" />
+    </rule>
+    <rule name="31">
+        <conditions />
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="attack" pet_skill="lightningbolt" down="false" pet_attackable_skill="lightningbolt" />
+    </rule>
+    <rule name="32">
+        <conditions />
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="prepare_skill" pet_skill="counter" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="attack" pet_skill="lightningbolt" down="true" pet_attackable_skill="lightningbolt" />
+    </rule>
+    <rule name="33">
+        <conditions />
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="prepare_skill" pet_skill="counter" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="attack" pet_skill="firebolt" down="true" pet_attackable_skill="firebolt" />
+    </rule>
+    <rule name="34">
+        <conditions />
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="attack" pet_skill="icebolt" down="false" pet_attackable_skill="icebolt" />
+    </rule>
+    <rule name="35">
+        <conditions />
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="prepare_skill" pet_skill="counter" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="attack" pet_skill="icebolt" down="true" pet_attackable_skill="icebolt" />
+    </rule>
+    <rule name="36">
+        <conditions />
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="defence" defence_enable_skill="all" />
+    </rule>
+    <rule name="37">
+        <conditions />
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="prepare_skill" pet_skill="counter" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="attacked" master_skill="all" down="true" />
+    </rule>
+    <rule name="38">
+        <conditions />
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="prepare_skill" pet_skill="counter" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="attacked" master_skill="all" down="false" />
+    </rule>
+    <rule name="39">
+        <conditions>
+            <condition name="target_state" state="walk" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="master_attack" master_skill="ranged_attack" />
+    </rule>
+    <rule name="40">
+        <conditions>
+            <condition name="target_state" state="run" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="master_attack" master_skill="ranged_attack" />
+    </rule>
+    <rule name="41">
+        <conditions>
+            <condition name="target_state" state="walk" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="master_attack" master_skill="magnum_shot" />
+    </rule>
+    <rule name="42">
+        <conditions>
+            <condition name="target_state" state="run" />
+        </conditions>
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="master_attack" master_skill="magnum_shot" />
+    </rule>
+    <rule name="43">
+        <conditions />
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="master_attacked" master_skill="all" down="true" />
+    </rule>
+    <rule name="44">
+        <conditions />
+        <pattern>
+            <param_decl />
+            <sequence>
+                <cmd name="cancel_skill" />
+                <cmd name="melee_attack" timeout="0" />
+                <cmd name="prepare_skill" pet_skill="defence" try_cnt="0" timeout="10000" />
+                <cmd name="wait" min="2000" max="9000" />
+                <cmd name="cancel_skill" />
+            </sequence>
+        </pattern>
+        <event name="master_attacked" master_skill="all" down="false" />
+    </rule>
+</rules>

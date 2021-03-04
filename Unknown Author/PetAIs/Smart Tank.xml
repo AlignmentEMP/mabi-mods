@@ -1,0 +1,150 @@
+<rules>
+    <rule name="Smart Tank">
+        <conditions/>
+        <pattern>
+            <param_decl/>
+            <sequence>
+                <cmd name="cancel_skill"/>
+                <cmd name="chase" chase_target="master" timeout="0" run="true"/>
+                <cmd name="wait" min="10000" max="10000"/>
+                <cmd name="wait" min="10000" max="10000"/>
+                <cmd name="wait" min="10000" max="10000"/>
+                <cmd name="wait" min="10000" max="10000"/>
+                <cmd name="wait" min="10000" max="10000"/>
+                <cmd name="wait" min="10000" max="10000"/>
+                <cmd name="wait" min="10000" max="10000"/>
+                <cmd name="wait" min="10000" max="10000"/>
+                <cmd name="wait" min="10000" max="10000"/>
+                <cmd name="wait" min="10000" max="10000"/>
+            </sequence>
+        </pattern>
+        <event name="master_skill_prepare" event_skill="windmill"/>
+    </rule>
+    <rule name="Defend the owner">
+        <conditions/>
+        <pattern>
+            <param_decl/>
+            <sequence>
+                <cmd name="cancel_skill"/>
+                <cmd name="melee_attack" timeout="0"/>
+            </sequence>
+        </pattern>
+        <event name="master_attacked" master_skill="all" down="false"/>
+    </rule>
+    <rule name="Defend the owner 2">
+        <conditions/>
+        <pattern>
+            <param_decl/>
+            <sequence>
+                <cmd name="cancel_skill"/>
+                <cmd name="melee_attack" timeout="0"/>
+            </sequence>
+        </pattern>
+        <event name="master_attacked" master_skill="all" down="true"/>
+    </rule>
+    <rule name="Cancel magic attack ">
+        <conditions>
+            <condition name="target_state" state="stop"/>
+            <condition name="target_distance" min_distance="100" max_distance="1500"/>
+        </conditions>
+        <pattern>
+            <param_decl/>
+            <sequence>
+                <cmd name="cancel_skill"/>
+                <cmd name="melee_attack" timeout="1000"/>
+            </sequence>
+        </pattern>
+        <event name="master_target_magic_prepare"/>
+    </rule>
+    <rule name="Protect the owner in distance">
+        <conditions/>
+        <pattern>
+            <param_decl/>
+            <sequence>
+                <cmd name="cancel_skill"/>
+                <cmd name="melee_attack" timeout="0"/>
+            </sequence>
+        </pattern>
+        <event name="master_aimed"/>
+    </rule>
+    <rule name="React for any distance attack">
+        <conditions/>
+        <pattern>
+            <param_decl/>
+            <sequence>
+                <cmd name="cancel_skill"/>
+                <cmd name="melee_attack" timeout="0"/>
+            </sequence>
+        </pattern>
+        <event name="aimed"/>
+    </rule>
+    <rule name="Attack back">
+        <conditions/>
+        <pattern>
+            <param_decl/>
+            <sequence>
+                <cmd name="melee_attack" timeout="0"/>
+            </sequence>
+        </pattern>
+        <event name="attacked" master_skill="all" down="false"/>
+    </rule>
+    <rule name="Attack back when attacked">
+        <conditions/>
+        <pattern>
+            <param_decl/>
+            <sequence>
+                <cmd name="melee_attack" timeout="0"/>
+            </sequence>
+        </pattern>
+        <event name="attacked" master_skill="all" down="true"/>
+    </rule>
+    <rule name="Support the owner">
+        <conditions/>
+        <pattern>
+            <param_decl/>
+            <sequence>
+                <cmd name="melee_attack" timeout="0"/>
+            </sequence>
+        </pattern>
+        <event name="master_defence" defence_enable_skill="all"/>
+    </rule>
+    <rule name="Don't disrupt">
+        <conditions>
+            <condition name="target_state" state="blowaway"/>
+            <condition name="target_state" state="shoved"/>
+            <condition name="target_state" state="hit"/>
+        </conditions>
+        <pattern>
+            <param_decl/>
+            <sequence>
+                <cmd name="cancel_skill"/>
+                <cmd name="chase" chase_target="enemy" timeout="0" run="true"/>
+                <cmd name="move_around" clockwise="true" radius="100" run="false" timeout="4000"/>
+            </sequence>
+        </pattern>
+        <event name="master_attack" master_skill="all"/>
+    </rule>
+    <rule name="Don't attack again">
+        <conditions/>
+        <pattern>
+            <param_decl/>
+            <sequence>
+                <cmd name="chase" chase_target="enemy" timeout="5000" run="true"/>
+                <cmd name="move_around" clockwise="true" radius="100" run="false" timeout="4000"/>
+                <cmd name="melee_attack" timeout="0"/>
+            </sequence>
+        </pattern>
+        <event name="attack" pet_attackable_skill="all" down="true"/>
+    </rule>
+    <rule name="React to any magic attack">
+        <conditions/>
+        <pattern>
+            <param_decl/>
+            <sequence>
+                <cmd name="cancel_skill"/>
+                <cmd name="melee_attack" timeout="0"/>
+            </sequence>
+        </pattern>
+        <event name="target_magic_prepare"/>
+    </rule>
+</rules>

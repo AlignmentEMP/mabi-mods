@@ -1,0 +1,49 @@
+<rules>
+    <rule name="Icebolt Spam">
+        <conditions>
+            <condition name="skill_preparable" pet_skill="icebolt"/>
+        </conditions>
+        <pattern>
+            <param_decl/>
+            <sequence>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+                <cmd name="stack_skill" stack_magic="icebolt" charge="1"/>
+                <cmd name="stackmagic_attack" stack_magic="icebolt" charge="1" timeout="5000"/>
+            </sequence>
+        </pattern>
+        <event name="master_attack" master_skill="all"/>
+    </rule>
+</rules>

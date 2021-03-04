@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<aidescdata>
+	<!--
+
+ AI desc
+
+2004년 4월 23일
+전형규
+
+-->
+	<template>
+		<!-- 입력값은 현재 무시하고 있다. -->
+		<var_decl>
+			<var name="visualfield_radius" default="950" />
+			<var name="audio_range" default="400" />
+		</var_decl>
+		<sensor visualfield_radius="%visualfield_radius" visualfield_angle="120" audio_range="%audio_range" />
+		<!-- return_to_startpoint="false"로 해야 스폰지점으로 돌아가지 않는다. -->
+		<character return_to_startpoint="false" />
+		<patterns>
+			<pattern name="wander">
+				<param_decl>
+				</param_decl>
+				<sequence>
+					<if condition="expr" expr="@is_usable_skill(10003) and @stamina&gt;5">
+						<then>
+							<cmd name="prepare_skill" skill_id="10003" try_cnt="0" skilldelay="200" />
+						</then>
+					</if>
+					<!--
+					<cmd name="wait" min="15000" max="15000" />
+					-->
+				</sequence>
+			</pattern>
+		</patterns>
+		<strategy>
+			<idle type="idle_wander" >
+				<pattern name="wander" />
+			</idle>
+		</strategy>
+	</template>
+	<definition race="humanmale">
+		<var_def>
+			<var name="visualfield_radius" value="950" />
+			<var name="audio_range" value="600" />
+		</var_def>
+	</definition>
+	<definition race="humanfemale">
+		<var_def>
+			<var name="visualfield_radius" value="950" />
+			<var name="audio_range" value="600" />
+		</var_def>
+	</definition>
+	<definition race="elfmale">
+		<var_def>
+			<var name="visualfield_radius" value="950" />
+			<var name="audio_range" value="600" />
+		</var_def>
+	</definition>
+	<definition race="elffemale">
+		<var_def>
+			<var name="visualfield_radius" value="950" />
+			<var name="audio_range" value="600" />
+		</var_def>
+	</definition>
+	<definition race="giantmale">
+		<var_def>
+			<var name="visualfield_radius" value="950" />
+			<var name="audio_range" value="600" />
+		</var_def>
+	</definition>
+	<definition race="giantfemale">
+		<var_def>
+			<var name="visualfield_radius" value="950" />
+			<var name="audio_range" value="600" />
+		</var_def>
+	</definition>
+	<definition race="imprp">
+		<var_def>
+			<var name="visualfield_radius" value="950" />
+			<var name="audio_range" value="600" />
+		</var_def>
+	</definition>
+	<definition race="giantimprp">
+		<var_def>
+			<var name="visualfield_radius" value="950" />
+			<var name="audio_range" value="600" />
+		</var_def>
+	</definition>
+	<definition race="Elatha">
+		<var_def>
+			<var name="visualfield_radius" value="950" />
+			<var name="audio_range" value="600" />
+		</var_def>
+	</definition>
+	<definition race="Karpfen">
+		<var_def>
+			<var name="visualfield_radius" value="950" />
+			<var name="audio_range" value="600" />
+		</var_def>
+	</definition>
+	<definition race="DarkKnight_Ruari">
+		<var_def>
+			<var name="visualfield_radius" value="950" />
+			<var name="audio_range" value="600" />
+		</var_def>
+	</definition>
+
+</aidescdata>

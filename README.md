@@ -1,2 +1,1 @@
-# mabi-mods
-My custom-made mods for MabiPro
+Align's custom-made mods for MabiPro
